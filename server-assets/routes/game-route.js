@@ -30,6 +30,8 @@ router.route('/guess')
 
   }
 
-  function createGuess(){
+  function createGuess(req, res, next){
+      var newGuess = req.body;
+
 
   }
