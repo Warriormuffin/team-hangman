@@ -5,9 +5,8 @@ var Schema = mongoose.Schema
 var GameSchema = new Schema({
   word: {type: String, required: true},
   incorrectGuesses: {type: Number, required: true},
-  guessedLetter: {type: Array, required: true},
-  solved: {type: Boolean, required: true},
-  user: {type: String, required: true}
+  guessedLetter: {type: Array},
+  solved: {type: Boolean, required: true}
 })
 
 
