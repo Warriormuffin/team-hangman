@@ -8,4 +8,4 @@ var WordSchema = new Schema({
 })
 
 var Word = mongoose.model('Word', WordSchema)
-module.exports = WordSchema
+module.exports = Word
