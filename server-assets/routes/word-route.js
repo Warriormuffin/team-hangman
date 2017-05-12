@@ -10,7 +10,7 @@ router.route('/')
 router.route('/')
   .post(createWord)
 
-function getWord(){
+function getWord(req, res, next){
 
 }
 
