@@ -1,12 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <title>Hangman</title>
 </head>
+
 <body>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 text-center">
+                <div id="picture">
+                    (hangman picture)
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 text-center">
+                <div id="word">
+                    (word)
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 text-center">
+                <form class="form-inline" onsubmit="app.controllers.gameController.tempUserGuess(event)">
+                    <div class="form-group">
+                        <label for="letter" class="sr-only">Guess Letter</label>
+                        <input type="text" class="form-control" id="letter">
+                    </div>
+                    <button type="submit" class="btn btn-default">Guess</button>
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6 text-center">
+                <h6>Number of Guesses: </h6><div id="counter"></div>
+            </div>
+            <div class="col-xs-6 text-center">
+                <h6>Letters Guessed: </h6><div id="letters-guessed"></div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- SCRIPTS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+    <script src="hangman-service.js"></script>
+    <script src="hangman-controller.js"></script>
+    <script src="init.js"></script>
 </body>
+
 </html>
