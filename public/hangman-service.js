@@ -2,13 +2,18 @@ function GameService() {
     var url = 'http://localhost:3000/game';
 
     //this object will store what the object is that we get from the server
-    var gameObj = {}
+    var gameObj = {
+        word: '_ _ _',
+        incorrectGuesses: 1,
+        guessedLetter: ['a','d'],
+        solved: false
+    };
 
     //this was a tester object (ignore)
     var tempGameObj = {
         word: '_ _ _',
-        incorrectGuesses: 0,
-        guessedLetter: [],
+        incorrectGuesses: 1,
+        guessedLetter: ['a','b'],
         solved: false
     };
 
@@ -18,16 +23,21 @@ function GameService() {
                 console.log("Already Guessed") //eventually change to updated DOM
                 return
             }
-            $.post(url + '/guess', guess).then(function (data) {
-                gameObj = data; 
-                cb(gameObj.guessedLetter, gameObj.word, gameObj.incorrectGuesses)
-            })
+            cb(gameObj.guessedLetter, gameObj.word, gameObj.incorrectGuesses)
+            // Re-Add when server running
+            // $.post(url + '/guess', guess).then(function (data) {
+            //     gameObj = data; 
+            //     cb(gameObj.guessedLetter, gameObj.word, gameObj.incorrectGuesses)
+            // })
         }
     }
 
     //still need newGame and getGame
 
-
+    this.newGame= function(cb){
+        // $.post(url).then()
+        cb(gameObj.guessedLetter, gameObj.word, gameObj.incorrectGuesses)
+    }
 
 
 
