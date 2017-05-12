@@ -10,11 +10,11 @@ router.route('/')
 router.route('/')
   .post(createWord)
 
-function getWord(){
+function getWord(req, res, next){
 
 }
 
-function createWord(res, req, next){
+function createWord(req, res, next){
   var newWord = req.body
     Word.create(newWord)
       .then(function(newlyCreatedWord){
