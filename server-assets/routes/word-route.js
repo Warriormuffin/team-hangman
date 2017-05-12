@@ -11,7 +11,7 @@ router.route('/')
   .post(createWord)
 
 function getWord(req, res, next){
-
+  
 }
 
 function createWord(req, res, next){
