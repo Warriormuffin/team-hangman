@@ -2,8 +2,10 @@ var router = require('express').Router()
 var Game = require('./../models/game-model')
 var Word = require('./../models/word-model')
 // var Game = require('./../models/game-model')
-var testWord = ''
+var currentWord = ''
 var game = {}
+var currentGuessedLetter = ''
+
 
 exports.mountPath = '/game'
 exports.router = router;
@@ -15,10 +17,10 @@ router.route('/')
   .post(createGame)
 
 router.route('/')
-  .put(updateGame)
+  .put(updateWord)
 
 router.route('/guess')
-  .post(createGuess)
+  .post(guess)
 
 
 function getGame(req, res, next){
@@ -29,8 +31,8 @@ function getGame(req, res, next){
 
 function createGame(req, res, next){
     Word.find({}).then(function(arr) {
-      testWord = getRandomWord(arr)
-      let blankedWord = drawTemplate(testWord)
+      currentWord = getRandomWord(arr)
+      let blankedWord = drawTemplate(currentWord)
       let newGame = new GameConstructor(blankedWord)
       Game.create(newGame).then(function(savedGame) {
         game = savedGame
@@ -46,9 +48,9 @@ function createGame(req, res, next){
     }
 
     function drawTemplate(str) {
-      var template = ''
+      var template = []
       for (var i = 0; i <= str.length; i++) {
-        template += '_ '
+        template.push('_')
       }
       return template
     }
@@ -62,15 +64,28 @@ function createGame(req, res, next){
 }
 
 
-function updateGame(){
+function updateWord(req, res, next, letter){
   var update = req.body
-
+  game._doc.guessedLetter.splice([letter], 0, currentGuessedLetter)
+  
+    
+  //if found replace space with found letter
+//add letter to guessed letters
 }
 
-function createGuess(req, res, next){
+function guess(req, res, next){
       var newGuess = req.body;
-//add letter to guessed letters
-//update string if found
-//or increment incorrect guesses
+      //game.guesdletter.push()
+//if werd.inc(newGuess){
 
+      for(var i = 0; i < currentWord.length; i++) {
+        var letter = currentWord[i];
+        if(newGuess == letter) {
+          currentGuessedLetter = letter;
+          updateWord(letter[i]);
+        } else {
+          game._doc.incorrectGuesses++
+        }
+      }
+//update string if found or increment incorrect guesses
 }
