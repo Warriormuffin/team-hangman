@@ -4,26 +4,18 @@ function GameService() {
     //this object will store what the object is that we get from the server
     var gameObj = {};
 
-    //this was a tester object (ignore)
-    var tempGameObj = {
-        word: '_ _ _',
-        incorrectGuesses: 1,
-        guessedLetter: ['a','b'],
-        solved: false
-    };
-
     this.userGuess = function (guess, cb) {
-        for (var i = 0; i < tempGameObj.guessedLetter.length; i++) {
-            if (guess == tempGameObj.guessedLetter[i]) {
+        for (var i = 0; i < gameObj.guessedLetter.length; i++) {
+            if (guess == gameObj.guessedLetter[i]) {
                 console.log("Already Guessed") //eventually change to updated DOM
                 return
             }
-            var objGuess = {'guess': guess}
+        }
+        var objGuess = {'guess': guess}
             $.post(url + '/guess', objGuess).then(function (data) {
                 gameObj = data;
                 cb(gameObj.guessedLetter, gameObj.word, gameObj.incorrectGuesses)
             })
-        }
     }
 
     //still need newGame and getGame
