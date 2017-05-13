@@ -49,7 +49,7 @@ function createGame(req, res, next){
 
     function drawTemplate(str) {
       var template = []
-      for (var i = 0; i <= str.length; i++) {
+      for (var i = 0; i < str.length; i++) {
         template.push('_')
       }
       return template
@@ -64,9 +64,12 @@ function createGame(req, res, next){
 }
 
 
-function updateWord(req, res, next, letter){
-  var update = req.body
-  game._doc.guessedLetter.splice([letter], 0, currentGuessedLetter)
+function updateWord(letter){
+for(var i = 0; i < currentWord.length; i++) {
+  if(currentWord[i] == letter){
+    game.word[i] = letter
+  }
+}
   
     
   //if found replace space with found letter
@@ -74,18 +77,29 @@ function updateWord(req, res, next, letter){
 }
 
 function guess(req, res, next){
-      var newGuess = req.body;
+      var newGuess = req.body
       //game.guesdletter.push()
 //if werd.inc(newGuess){
 
-      for(var i = 0; i < currentWord.length; i++) {
-        var letter = currentWord[i];
-        if(newGuess == letter) {
-          currentGuessedLetter = letter;
-          updateWord(letter[i]);
-        } else {
-          game._doc.incorrectGuesses++
-        }
-      }
+    if(!currentWord.includes(newGuess.guess)) {
+      game._doc.incorrectGuesses++
+      updateWord(newGuess.guess)
+        game.save().then(function(gameObj){
+          game = gameObj
+          res.send(game)
+        }).catch(function(err) {
+          console.log(err)
+        })
+    } else {
+        updateWord(newGuess.guess)
+        game.save().then(function(gameObj){
+          game = gameObj
+          res.send(game)
+        }).catch(function(err) {
+          console.log(err)
+        })
+    }
+
+
 //update string if found or increment incorrect guesses
 }
