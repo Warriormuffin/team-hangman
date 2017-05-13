@@ -6,13 +6,13 @@ function GameController() {
 
     // Grabs the guess from the user
     this.userGuess = function (e) {
-        debugger
         e.preventDefault()
-
         var form = e.target.letter.value
-
         //sends the guess to the game service
         gameService.userGuess(form, draw)
+        e.target.letter.value = ""
+        // document.getElementById('letter').reset()
+
 
         //user guess will be returning game obj for processing/drawing
     }

@@ -5,6 +5,12 @@ function GameService() {
     var gameObj = {};
 
     this.userGuess = function (guess, cb) {
+        debugger
+        var charCode = guess.charCodeAt(0)
+        if(charCode < 65 || charCode > 122 || guess.length > 1){
+            console.log('Guess was a number || guess length was bigger than 1')
+            return
+        }
         for (var i = 0; i < gameObj.guessedLetter.length; i++) {
             if (guess == gameObj.guessedLetter[i]) {
                 console.log("Already Guessed") //eventually change to updated DOM
