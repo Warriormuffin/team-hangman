@@ -6,7 +6,7 @@ var GameSchema = new Schema({
   word: {type: Array, required: true},
   incorrectGuesses: {type: Number, required: true},
   guessedLetter: {type: Array},
-  solved: {type: Boolean, required: true}
+  solved: {type: Boolean, required: true, default: false}
 })
 
 
