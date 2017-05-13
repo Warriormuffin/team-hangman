@@ -47,10 +47,18 @@ body {
   font-weight: bolder;
 }
 
-h6 {
+h5 {
   color: #fff;
   font-family: Viga;
   font-size: 28px;
+  text-shadow: 2px 2px #000;
+  padding-top: 15px;
+}
+
+h6 {
+  color: #fff;
+  font-family: Viga;
+  font-size: 20px;
   text-shadow: 2px 2px #000;
   padding-top: 15px;
 }
