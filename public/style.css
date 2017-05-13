@@ -1,7 +1,16 @@
+body {
+  background-image: url(https://static.vecteezy.com/system/resources/previews/000/098/164/non_2x/old-western-towns-vector.jpg);
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
 #picture {
   height: 200px;
   width: 75px;
-  background-image: url("https://files.slack.com/files-pri/T1GGQN1RU-F5D0N8XJ6/man.png");
+  background-image: url("http://i.imgur.com/zNneSCM.png");
   display: inline-block;
 }
 
@@ -36,13 +45,4 @@
 .game-over {
   color: red;
   font-weight: bolder;
-}
-
-body {
-  background-image: url(https://static.vecteezy.com/system/resources/previews/000/098/164/non_2x/old-western-towns-vector.jpg);
-  background-repeat: no-repeat;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
 }
