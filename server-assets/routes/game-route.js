@@ -70,16 +70,13 @@ for(var i = 0; i < currentWord.length; i++) {
     game.word[i] = letter
   }
 }
-  
-    
   //if found replace space with found letter
 //add letter to guessed letters
 }
 
 function guess(req, res, next){
       var newGuess = req.body
-      //game.guesdletter.push()
-//if werd.inc(newGuess){
+      game.guessedLetter.push(newGuess.guess)
 
     if(!currentWord.includes(newGuess.guess)) {
       game._doc.incorrectGuesses++
@@ -99,7 +96,5 @@ function guess(req, res, next){
           console.log(err)
         })
     }
-
-
 //update string if found or increment incorrect guesses
 }
