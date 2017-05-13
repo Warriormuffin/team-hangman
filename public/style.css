@@ -1,1 +1,6 @@
-null
+#picture {
+  height: 200px;
+  width: 75px;
+  background-image: url("https://files.slack.com/files-pri/T1GGQN1RU-F5D0N8XJ6/man.png");
+  display: inline-block;
+}
