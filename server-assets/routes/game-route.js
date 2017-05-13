@@ -67,7 +67,7 @@ function createGame(req, res, next){
 function updateWord(letter){
 for(var i = 0; i < currentWord.length; i++) {
   if(currentWord[i] == letter){
-    game.word[i] = letter
+    game.word[i] = letter 
   }
 }
   //if found replace space with found letter
