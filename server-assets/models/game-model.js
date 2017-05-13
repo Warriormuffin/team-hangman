@@ -3,7 +3,7 @@ var Schema = mongoose.Schema
 
 
 var GameSchema = new Schema({
-  word: {type: String, required: true},
+  word: {type: Array, required: true},
   incorrectGuesses: {type: Number, required: true},
   guessedLetter: {type: Array},
   solved: {type: Boolean, required: true}
